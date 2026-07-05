@@ -131,39 +131,69 @@ Negative net salary values were also treated as invalid for compensation analysi
 * NUMBER_OF_DAYS_WORKED
 1. There are 191 distinct values
 2. Semi-annual reporting periods and Quarterly reporting periods dominate the dataset. The middle 50% of payroll records span between roughly three months and six months, confirming that quarterly and semi-annual periods form the core reporting structure.
+
 Q1 = 90 days
+
 Q3 = 181 days
+
 IQR = 91 days
+
 The most common period lengths are:
+
 181 days- 15.88%
+
 184 days- 14.24%
+
 182 days- 3.68%
+
 92 days- 18.04%
+
 91 days- 15.71%
+
 90 days- 9.40%
+
 Together these represent around 77% of transactions.
 3. The payroll system appears to use a mix of reporting cycles
+
 Common durations include:
+
 15 days
+
 30 days
+
 31 days
+
 90–92 days
+
 181–184 days
+
 365 days
+
 The overall duration range extends from 1 day to 1186 days.
+
 The dataset contains a combination of:
+
 biweekly reporting periods
+
 monthly reporting periods
+
 quarterly reporting periods
+
 semi-annual reporting periods
+
 annual reporting periods
+
 This indicates that organizations follow multiple payroll reporting schedules.
 4. Need for Salary Normalization
 The large variation in reporting period length indicates that payroll transactions do not follow a single standardized duration. As a result, direct comparison of gross salary and net salary values would be misleading, which justifies the use of daily salary normalization for compensation analysis.
 5. Duration distribution is right-skewed
+
 Mean = 118.36 days
+
 Median = 92 days
+
 Mean > Median
+
 Maximum duration is much larger than the most common durations. Most payroll records have relatively short to medium reporting periods, while a smaller number of long-duration records create a right-skewed distribution.
 
 * NET_GREATER_THAN_GROSS 
@@ -183,33 +213,50 @@ Maximum duration is much larger than the most common durations. Most payroll rec
 1. Most payroll records belong to the lowest salary band. 93.88% of records fall in the ≤500 per day band. Only 6.12% of records are above 500 per day.
 The payroll population is heavily concentrated in lower daily salary ranges. High daily salary records exist but represent a very small portion of the workforce.
 2. The typical daily net salary is relatively low and most employees are clustered within a narrow salary range.
+
 Median = 99.39 per day
+
 Q1 = 54.15 per day
+
 Q3 = 188.13 per day
+
 IQR = 133.98
+
 50% of all payroll records have daily net salaries between approximately 54 and 188 per day. A typical employee receives less than 100 per day in net compensation.
 3. The salary distribution is strongly right-skewed
+
 Mean = 183.35
+
 Median = 99.39
+
 Maximum = 131,513.11
+
 The average daily salary is substantially higher than the median because a small number of very high salary records pull the average upward. The mean does not represent the typical employee well in this dataset. Extreme high-salary records are present.
 4. Salary variation for a typical employee is moderate
+
 Median Absolute Deviation = 60.07
-A typical payroll record differs from the median daily salary by about 60 per day. This suggests that most employees earn salaries reasonably close to the typical compensation level, despite the presence of extreme high-salary records.
-This is a more representative measure of spread than standard deviation because the distribution is heavily skewed.
+
+A typical payroll record differs from the median daily salary by about 60 per day. This suggests that most employees earn salaries reasonably close to the typical compensation level, despite the presence of extreme high-salary records. This is a more representative measure of spread than standard deviation because the distribution is heavily skewed.
 5. Very high salary bands represent a tiny fraction of records
+
+
 0.10% between 2,501–5,000
+
 0.10% between 5,001–10,000
+
 0.05% between 10,001–25,000
+
 0.01% between 25,001–50,000
+
 0.003% above 50,000
+
 Very high daily salaries are extremely rare. The payroll structure is dominated by lower and middle salary levels, while high earners form only a small tail of the distribution.
 6. Zero-salary records are uncommon
+
 1.23% of records have a net salary per day of zero.
+
 Zero net salary records represent a small portion of the dataset. These may reflect cases where deductions or recoveries reduced take-home pay to zero, or other special payroll situations or data quality issue.
-7. The dataset contains substantial salary diversity
-680,956 distinct daily salary values
-The large number of unique salary values indicates a highly granular compensation structure rather than a small number of standardized pay rates.
+7. The dataset contains substantial salary diversity. 680,956 distinct daily salary values. The large number of unique salary values indicates a highly granular compensation structure rather than a small number of standardized pay rates.
 
 * GROS SALARY PER DAY
 1. Most payroll records belong to the lower salary bands. 91.70% of payroll records fall within the ≤500 per day band. Only 8.30% of records exceed 500 per day.
@@ -218,61 +265,86 @@ The workforce is heavily concentrated in lower daily gross salary levels. Higher
 Median = 122.46 per day
 A typical payroll record has a daily gross salary of approximately 122 per day. Since the distribution is highly skewed, the median provides a better representation of the typical employee than the average.
 3. Half of all payroll records fall within a moderate salary range
+
 Q1 = 66.88
+
 Q3 = 232.35
+
 IQR = 165.48
+
 The middle 50% of payroll records have daily gross salaries between approximately 67 and 232 per day. This indicates that most employees receive compensation within a relatively concentrated range.
 4. Typical salary variation is moderate
+
 MAD = 66.96
+
 A typical payroll record differs from the median gross salary by about 67 per day. This suggests that most employees earn salaries reasonably close to the typical compensation level despite the presence of a few extremely high salary records.
 5. The distribution is strongly right-skewed. Extreme high-salary records are present
+
 Mean = 229.71
+
 Median = 122.46
+
 Maximum = 189,415 per day
+
 Range = 189,414.94
+
 The average daily gross salary is almost twice the median. This indicates that a relatively small number of high-salary records significantly increase the overall average while most employees earn substantially less.
-7. Compensation levels are highly diverse
-456,534 distinct daily gross salary values.
-The large number of unique salary values indicates a highly granular compensation structure with substantial variation across employees, organizations, departments, and job roles.
+7. Compensation levels are highly diverse. 456,534 distinct daily gross salary values. The large number of unique salary values indicates a highly granular compensation structure with substantial variation across employees, organizations, departments, and job roles.
 8. High salary bands contain very few records
+
 0.37% of records have daily gross salaries above 2,500.
+
 0.17% exceed 5,000 per day.
+
 Only 0.02% exceed 25,000 per day.
+
 Very high compensation levels are extremely uncommon. The payroll system is overwhelmingly dominated by lower and middle salary ranges.
 
 * DEDUCTIONS
 1. Most payroll records have relatively small deductions. 
-70.71% of payroll records have deductions below 50 per day. 84.43% have deductions below 100 per day.
-Deductions are concentrated in the lower bands
+
+70.71% of payroll records have deductions below 50 per day. 84.43% have deductions below 100 per day. Deductions are concentrated in the lower bands
+
 23.43% fall in the 0–10 band.
+
 26.37% fall in the 10–25 band.
+
 20.91% fall in the 25–50 band.
+
 The majority of employees experience relatively small daily deductions. Large deduction amounts exist but are concentrated in a small portion of payroll records.
 2. The typical deduction is modest
+
 Median = 23.41
+
 Q1 = 9.59
+
 Q3 = 53.00
+
 A typical payroll record has a daily deduction of about 23. Most employees experience deductions well below 100 per day.
 3. Half of all payroll records have deductions between 9.59 and 53
+
 IQR = 43.41
+
 The middle 50% of payroll records have deductions between approximately 10 and 53 per day, indicating that deduction amounts are fairly concentrated around lower values.
 4. Typical variation in deductions is relatively small
+
 MAD = 19.06
-A typical payroll record differs from the median deduction by about 19 per day. This suggests that most employees experience deduction amounts reasonably close to the typical level.
-This is a more representative measure of spread than the range because the distribution contains extreme values.
+
+A typical payroll record differs from the median deduction by about 19 per day. This suggests that most employees experience deduction amounts reasonably close to the typical level. This is a more representative measure of spread than the range because the distribution contains extreme values.
 5. The deduction distribution is strongly right-skewed. Extreme deduction values exist
+
 Mean = 56.84
+
 Median = 23.41
+
 Maximum deduction = 119,670.45
+
 Range = 119,670.45
+
 The average deduction is more than twice the median deduction, indicating that a relatively small number of records with large deductions pull the average upward.
 The mean does not represent the typical employee particularly well.
-7. Zero deductions are relatively uncommon
-Only 2.72% of payroll records have zero deductions.
-Most employees experience some level of payroll deduction. Records with no deductions represent a small minority of payroll transactions.
-8. High deduction amounts are rare
-0.69% of records have deductions between 500 and 1000. Only 0.26% exceed 1000.
-Very large deductions occur in only a tiny fraction of payroll records. The deduction structure is dominated by low and moderate deduction amounts.
+7. Zero deductions are relatively uncommon. Only 2.72% of payroll records have zero deductions. Most employees experience some level of payroll deduction. Records with no deductions represent a small minority of payroll transactions.
+8. High deduction amounts are rare. 0.69% of records have deductions between 500 and 1000. Only 0.26% exceed 1000. Very large deductions occur in only a tiny fraction of payroll records. The deduction structure is dominated by low and moderate deduction amounts.
 9. Deduction amounts are highly granular
 668,119 distinct deduction values.
 
@@ -283,26 +355,36 @@ Very large deductions occur in only a tiny fraction of payroll records. The dedu
 Deduction burden varies significantly across states.
 
 Highest deduction burden states:
+
 Oaxaca = 33.96%
+
 Jalisco = 31.04%
+
 Tlaxcala = 26.52%
+
 Durango = 25.26%
+
 Mexico = 24.48%
 
 Lowest deduction burden states:
+
 Sinaloa = 5.14%
+
 Hidalgo = 6.30%
+
 Guanajuato = 12.57%
+
 Colima = 13.43%
+
 Queretaro = 13.72%
 
 Oaxaca's median deduction rate is 33.96%.
+
 Sinaloa's median deduction rate is 5.14%.
 
 Employees in Oaxaca experience a typical deduction burden that is more than six times higher than employees in Sinaloa. This suggests substantial regional differences in payroll structures, compensation policies, or  deductions. Deduction burden is not evenly distributed across the country. Certain states consistently experience higher payroll deductions than others.
 
 * ORGANISATIONS × MEDIAN DEDUCTION RATE
-
 1. Most organizations are clustered below 5,000 transactions.
 2. A small number of organizations have very large transaction volumes (20k, 50k, 100k+).
 3. The organizations with extreme deduction rates (60%, 80%, 100%) have very few transactions.
