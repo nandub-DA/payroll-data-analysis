@@ -167,17 +167,17 @@ Mean > Median
 Maximum duration is much larger than the most common durations. Most payroll records have relatively short to medium reporting periods, while a smaller number of long-duration records create a right-skewed distribution.
 
 * NET_GREATER_THAN_GROSS 
-94.94% are valid and 5.06% are invalid
+1. 94.94% are valid and 5.06% are invalid
 
 * GROSS SALARY FLAG
-99.89% are valid and only 0.11% are invalid
+1. 99.89% are valid and only 0.11% are invalid
 
 * NET SALARY FLAG 
-97.29% are valid and 2.71% are invalid
+1. 97.29% are valid and 2.71% are invalid
 
 * DATE VALIDITY STATUS
-99.92% of payroll records were classified as valid. Only 0.08% of records were marked as invalid.
-Date-related data quality issues are rare and have minimal impact on the overall dataset. Excluding these records is unlikely to materially affect analytical results.
+1. 99.92% of payroll records were classified as valid. Only 0.08% of records were marked as invalid.
+2. Date-related data quality issues are rare and have minimal impact on the overall dataset. Excluding these records is unlikely to materially affect analytical results.
 
 * NET SALARY PER DAY
 1. Most payroll records belong to the lowest salary band. 93.88% of records fall in the ≤500 per day band. Only 6.12% of records are above 500 per day.
