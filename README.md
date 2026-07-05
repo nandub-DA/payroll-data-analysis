@@ -23,33 +23,20 @@ The objective of the project is to identify workforce segments that experience d
 ### CLEANED AND TRANSFORMED DATA
 
 * Translated the column names from Spanish (Mexico) to English.
-
 * There is 72833 categories in job titles column alone. More than 1177771 distinct names. 2565 distinct organisations. And same way 91411 departments too. In state column there are 31 states. Totally there is more than 1978156 transactions that is more than 19.78 lakh rows.
-
 * Trimmed extra spaces, removed non-printable characters, and converted text to uppercase.
-
 * Removed line breaks from text fields.
-
 * Set correct data types for all columns. Used Spanish (Mexico) for dates (date locale).
-
 * Checked for errors.
-
 * Did not remove duplicates because INFORMATION_ID is unique for every row.
-
 * Removed the DESIGNATION column because it contained the same values as the JOB_TITLE column.
-
 * Removed rows where gross salary was missing or zero, as they have no financial impact.
   Net salary rows still contain nulls and zero, but these were kept because gross salary was present.
   Net salary values were not filled or changed, as doing so would break the logical relationship between gross and net salary.
-
 * Filled missing and 'EN BLANCO' person names with NAME UNKNOWN.
-
 * Removed Blank Date rows.
-
 * The same employee name appears multiple times in the dataset. These records were not treated as duplicates because employees may have multiple payroll transactions across different reporting periods or changes in payroll-related information. The dataset does not provide sufficient documentation to determine the exact reason for each repeated record.
-
 * The reporting periods are not consistent across the dataset. Records span multiple reporting period start and end dates, and the reporting years also vary. Therefore, the data does not represent a single common reporting period for all employees.
-
 • The dataset contained several date quality issues in the reporting period start and end date columns. Some records had unrealistic years such as 0208, 0219, 1941 and 2094. There were also records where the reporting period end date occurred before the start date.
 To identify the actual operational payroll period, the distribution of years in both date columns was analyzed. More than 99.99% of records belonged to the years 2015 to 2020, with 2018 and 2019 contributing the majority of payroll transactions.
 Based on this analysis, a DATE_VALIDITY_STATUS was created using the following conditions:
@@ -57,18 +44,14 @@ Reporting period start date must be before or equal to reporting period end date
 Both start year and end year must belong to the range 2015 to 2020.
 Records not satisfying these conditions were marked as INVALID and excluded from duration-based calculations such as number of days worked, salary per day, and deduction analysis.
 This validation process helped improve the reliability of payroll and compensation analysis by removing corrupted or unrealistic reporting periods.
-
 • The dataset contains highly fragmented job title and department categories, likely caused by inconsistent naming conventions across organizations and data quality issues. This may slightly affect the precision of workforce grouping and category-level payroll analysis.
-
 • Created GROSS_SALARY_FLAG column. Only payroll records with positive gross salary values were included in analysis.
 Records containing zero or negative gross salary values were treated as invalid for salary distribution and deduction analysis because no supporting business documentation was available to explain whether these values represented adjustments, reversals, inactive payroll records, or other non-standard payroll events.
 To avoid introducing unsupported assumptions into the analysis, only positive gross salary records were used for salary normalization and compensation-related calculations.
-
 • A NET_GREATER_THAN_GROSS flag column was created to identify records where net salary was greater than gross salary.
 In normal payroll calculations, net salary should not exceed gross salary because deductions are usually subtracted from gross salary to calculate take-home pay.
 Records where net salary was greater than gross salary were marked as "INVALID" and excluded from salary-per-day and deduction analysis to avoid distorted compensation calculations.
 The validation was applied only to rows where net salary values were available.
-
 • A NET_SALARY_FLAG column was created to identify records suitable for analysis.
 Records were marked as "VALID" only when:
 Net salary was not blank
@@ -77,23 +60,14 @@ GROSS_SALARY_FLAG already marked as valid
 Zero net salary values were retained when the corresponding gross salary was positive because these records may represent cases where deductions or recoveries reduced the employee's take-home salary to zero.
 Blank net salary values were treated as invalid because they represent missing or unavailable payroll information rather than actual compensation values.
 Negative net salary values were also treated as invalid for compensation analysis due to the absence of supporting business documentation explaining these records.
-
 * Job title values contained many numbers and mixed formats. Only missing values were filled with UNKNOWN JOB TITLE.
-
 * Department values also contained many mixed formats. Only missing values were filled with UNKNOWN DEPARTMENT.
-
 * Person name, department, and job title were not heavily cleaned because there was no official reference to standardise them. Only blanks were handled.
-
 * Payroll reporting periods vary across records. To standardize salary comparisons, gross salary and net salary were converted into daily values in GROSS_SALARY_PER_DAY and NET_SALARY_PER_DAY columns using the NUMBER_OF_DAYS_WORKED column, which was calculated from the reporting period start and end dates. This ensures salaries from different payroll durations can be compared on a consistent daily basis. Records with zero or negative values were excluded from the daily salary calculation by returning BLANK().
-
 • A GROSS_SALARY_PER_DAY_BAND column was created by grouping GROSS_SALARY_PER_DAY into predefined salary ranges. This simplifies the analysis of salary distribution and enables comparison of payroll deduction rates across different gross salary groups. Blank values remained blank.
- 
 * A NET_SALARY_PER_DAY_BAND column was created by grouping NET_SALARY_PER_DAY into predefined salary ranges. This simplifies the analysis of salary distribution and enables comparisons of payroll deductions across different net salary groups. Zero net salary values were assigned to a separate category, while blank values remained blank.
- 
 * A DEDUCTIONS column was created by calculating the difference between GROSS_SALARY_PER_DAY and NET_SALARY_PER_DAY. Invalid or incomplete records returned BLANK().
-
 * A DEDUCTION_BAND column was created by grouping deduction amounts into predefined ranges. This simplifies the analysis of payroll deduction distribution and enables comparison of employees based on deduction levels. Zero deductions were assigned to a separate category, while blank values remained blank.
-
 * A DEDUCTION_RATE column was created by dividing DEDUCTIONS by GROSS_SALARY_PER_DAY and multiplying the result by 100 to express deductions as a percentage of gross salary.
 
 ### EXPLORATORY DATA ANALYSIS
@@ -120,7 +94,7 @@ Negative net salary values were also treated as invalid for compensation analysi
 7. Many states have very small payroll transaction volumes, which may indicate smaller workforce size, fewer participating organizations, or lower operational activity.
 
 * NET SALARY
-The largest employee concentrations are:
+1. The largest employee concentrations are:
 10K–25K, 5K–10K, 25K–50K
 
 * JOB TITLES
