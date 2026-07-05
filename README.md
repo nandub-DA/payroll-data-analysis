@@ -478,9 +478,9 @@ Workforce segments experiencing the highest deduction burdens are primarily midd
 
 ## 7. FILES INCLUDED
 
-* `Payroll_Deduction_Burden_Analysis_Mexico.pbix` – Power BI report
+* `Payroll_Analysis_Mexico.pbix` – Power BI report
 * `README.md` – Project description
 
 ## 8. How to Use
 
-* Open `Payroll_Deduction_Burden_Analysis_Mexico.pbix` in Power BI Desktop to explore the visuals and to view the cleaned data.
+* Open `Payroll_Analysis_Mexico.pbix` in Power BI Desktop to explore the visuals and to view the cleaned data.
